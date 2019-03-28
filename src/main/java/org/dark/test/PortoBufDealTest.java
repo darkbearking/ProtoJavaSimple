@@ -1,7 +1,8 @@
 package org.dark.test;
 
-import com.lw.proto.Demo;
-import com.lw.proto.FileBean;
+import org.dark.beans.FileBean;
+import org.dark.beans.FileEntity;
+import org.dark.beans.Test;
 
 /**
  * 调用生成的java类，进行一系列操作
@@ -11,13 +12,20 @@ import com.lw.proto.FileBean;
 public class PortoBufDealTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Demo demo = null;
-		FileBean fileBean = FileBean.newBuilder().build();
-		fileBean.toBuilder().setFileName("Test Name");
-		fileBean.toBuilder().setOpt(1);
+		Test.gps_data.Builder builder = Test.gps_data.newBuilder();
+		builder.setAltitude(1);
+
+		FileBean.Builder builderBean = FileBean.newBuilder();
+		builderBean.setFileLength(1);
+		builderBean.setFileName("test file");
+		System.out.println(builderBean.toString());
 		
-		fileBean.toByteArray();
+		FileBean bean = builderBean.build();
+		System.out.println(bean.toString());
+		
+		for(byte b : bean.toByteArray()) {
+			System.out.print(b);
+		}
 	}
 
 }
