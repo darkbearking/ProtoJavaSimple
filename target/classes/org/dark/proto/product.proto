@@ -1,0 +1,12 @@
+syntax = "proto3";
+option java_package = "org.dark.beans";
+
+message productData {
+	int64 id = 1;
+	string proId = 2;
+	string createTime = 3;
+	double price = 4;
+	double xPrice = 5;
+	float discount = 6;
+	int32 inventory = 7;
+}
